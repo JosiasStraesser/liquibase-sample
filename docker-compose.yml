@@ -30,11 +30,10 @@ services:
           - cc-net
         volumes: 
             - ./liquibase:/liquibase/
-            - ./update.sh:/update.sh
         environment: 
             - LIQUIBASE_URL=jdbc:postgresql://spike-liquibase-db:5432/liquibase-db
             - LIQUIBASE_USERNAME=liquibase
             - LIQUIBASE_PASSWORD=liquibase
         depends_on: 
             - spike-liquibase-db
-        command: liquibase --changeLogFile=liquibase/changelog-master.json updateSql
+        command: liquibase --changeLogFile=/liquibase/changelog-master.json updateSql

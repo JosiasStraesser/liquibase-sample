@@ -17,12 +17,12 @@
                     {
                         "sqlFile": {
                             "endDelimiter": "\\nGO",
-                            "path": "scripts/v1/file.sql"
+                            "path": "/liquibase/scripts/v1/file.sql"
                         },
                         "rollback":{
                             "sqlFile": {
                                 "endDelimiter": "\\nGO",
-                                "path": "scripts/v1/file.sql"
+                                "path": "/liquibase/scripts/v1/file.sql"
                             }
                         }
                     }
