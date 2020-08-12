@@ -17,12 +17,24 @@
                     {
                         "sqlFile": {
                             "endDelimiter": "\\nGO",
-                            "path": "/liquibase/scripts/v1/foo.sql"
+                            "path": "/liquibase/scripts/v1/0.foo.sql"
                         },
-                        "rollback":{
+                        "rollback": {
                             "sqlFile": {
                                 "endDelimiter": "\\nGO",
-                                "path": "/liquibase/scripts/v1/foo.rollback.sql"
+                                "path": "/liquibase/scripts/v1/0.foo.rollback.sql"
+                            }
+                        }
+                    },
+                    {
+                        "sqlFile": {
+                            "endDelimiter": "\\nGO",
+                            "path": "/liquibase/scripts/v1/1.bar.sql"
+                        },
+                        "rollback": {
+                            "sqlFile": {
+                                "endDelimiter": "\\nGO",
+                                "path": "/liquibase/scripts/v1/1.bar.rollback.sql"
                             }
                         }
                     }
