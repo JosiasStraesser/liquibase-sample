@@ -8,7 +8,7 @@ networks:
     driver: bridge
 
 services: 
-    spike-liquibase-db:
+    database:
         image: postgres:12.2
         container_name: spike-liquibase-db
         ports: 
@@ -35,5 +35,5 @@ services:
             - LIQUIBASE_USERNAME=liquibase
             - LIQUIBASE_PASSWORD=liquibase
         depends_on: 
-            - spike-liquibase-db
+            - database
         command: liquibase --changeLogFile=/liquibase/changelog-master.json updateSql

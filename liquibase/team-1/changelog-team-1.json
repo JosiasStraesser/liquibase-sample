@@ -3,7 +3,7 @@
         {
             "include": [
                 {
-                    "file": "/liquibase/team-1/changelog-team-1.json"
+                    "file": "/liquibase/team-1/feature-1/changelog.json"
                 }
             ]
         }

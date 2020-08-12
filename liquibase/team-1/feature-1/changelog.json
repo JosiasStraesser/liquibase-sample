@@ -1,0 +1,45 @@
+{
+    "databaseChangeLog": [
+        {
+            "preConditions": [
+                {
+                    "runningAs": {
+                        "username": "liquibase"
+                    }
+                }
+            ]
+        },
+        {
+            "changeSet": {
+                "id": "sqlFile-example",
+                "author": "liquibase-docs",
+                "changes": [
+                    {
+                        "sqlFile": {
+                            "endDelimiter": "\\nGO",
+                            "path": "/liquibase/team-1/feature-1/scripts/0.foo.sql"
+                        },
+                        "rollback": {
+                            "sqlFile": {
+                                "endDelimiter": "\\nGO",
+                                "path": "/liquibase/team-1/feature-1/scripts/0.foo.rollback.sql"
+                            }
+                        }
+                    },
+                    {
+                        "sqlFile": {
+                            "endDelimiter": "\\nGO",
+                            "path": "/liquibase/team-1/feature-1/scripts/1.bar.sql"
+                        },
+                        "rollback": {
+                            "sqlFile": {
+                                "endDelimiter": "\\nGO",
+                                "path": "/liquibase/team-1/feature-1/scripts/1.bar.rollback.sql"
+                            }
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}
