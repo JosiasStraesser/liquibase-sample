@@ -1,0 +1,33 @@
+{
+    "databaseChangeLog": [
+        {
+            "preConditions": [
+                {
+                    "runningAs": {
+                        "username": "liquibase"
+                    }
+                }
+            ]
+        },
+        {
+            "changeSet": {
+                "id": "sqlFile-example",
+                "author": "liquibase-docs",
+                "changes": [
+                    {
+                        "sqlFile": {
+                            "endDelimiter": "\\nGO",
+                            "path": "scripts/v1/file.sql"
+                        },
+                        "rollback":{
+                            "sqlFile": {
+                                "endDelimiter": "\\nGO",
+                                "path": "scripts/v1/file.sql"
+                            }
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

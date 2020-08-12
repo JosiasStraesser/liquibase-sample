@@ -1,0 +1,40 @@
+version: "3.3"
+
+volumes:
+    db-data:
+
+networks:
+  cc-net:
+    driver: bridge
+
+services: 
+    spike-liquibase-db:
+        image: postgres:12.2
+        container_name: spike-liquibase-db
+        ports: 
+            - 54320:5432
+        environment: 
+            - POSTGRES_HOST_AUTH_METHOD=trust
+            - POSTGRES_USER=liquibase
+            - POSTGRES_PASSWORD=liquibase
+            - POSTGRES_DB=liquibase-db
+        networks:
+          - cc-net
+        volumes: 
+            - db-data:/var/lib/postgresql/data
+
+    liquibase:
+        image: webdevops/liquibase:postgres
+        container_name: liquibase-cli
+        networks:
+          - cc-net
+        volumes: 
+            - ./liquibase:/liquibase/
+            - ./update.sh:/update.sh
+        environment: 
+            - LIQUIBASE_URL=jdbc:postgresql://spike-liquibase-db:5432/liquibase-db
+            - LIQUIBASE_USERNAME=liquibase
+            - LIQUIBASE_PASSWORD=liquibase
+        depends_on: 
+            - spike-liquibase-db
+        command: liquibase --changeLogFile=liquibase/changelog-master.json updateSql
