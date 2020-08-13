@@ -4,7 +4,10 @@
 
 - [Docker](https://docs.docker.com/engine/install/ubuntu/#install-using-the-convenience-script)
 - [Docker-Compose](https://docs.docker.com/compose/install/#install-compose-on-linux-systems)
-- [PostgreSQL 12.2](https://www.postgresql.org/download/linux/ubuntu/)
+
+## References
+- [Liquibase](https://docs.liquibase.com/home.html)
+- [Liquibase Docker images](https://dockerfile.readthedocs.io/en/latest/content/DockerImages/dockerfiles/liquibase.html)
 
 ## Running through Make
 
