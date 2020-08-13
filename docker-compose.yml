@@ -22,10 +22,10 @@ services:
           - cc-net
         volumes: 
             - db-data:/var/lib/postgresql/data
-
-    liquibase:
+            
+    tag:
         image: webdevops/liquibase:postgres
-        container_name: liquibase-cli
+        container_name: liquibase-tag
         networks:
           - cc-net
         volumes: 
@@ -36,4 +36,35 @@ services:
             - LIQUIBASE_PASSWORD=liquibase
         depends_on: 
             - database
-        command: liquibase --changeLogFile=/liquibase/changelog-master.json updateSql
+        command: liquibase --changeLogFile=/liquibase/changelog-master.json tag $TAG
+
+    update:
+        image: webdevops/liquibase:postgres
+        container_name: liquibase-update
+        networks:
+          - cc-net
+        volumes: 
+            - ./liquibase:/liquibase/
+        environment: 
+            - LIQUIBASE_URL=jdbc:postgresql://spike-liquibase-db:5432/liquibase-db
+            - LIQUIBASE_USERNAME=liquibase
+            - LIQUIBASE_PASSWORD=liquibase
+        depends_on: 
+            - tag
+        command: liquibase --changeLogFile=/liquibase/changelog-master.json update
+
+    rollback:
+        image: webdevops/liquibase:postgres
+        container_name: liquibase-rollback
+        networks:
+          - cc-net
+        volumes: 
+            - ./liquibase:/liquibase/
+        environment: 
+            - LIQUIBASE_URL=jdbc:postgresql://spike-liquibase-db:5432/liquibase-db
+            - LIQUIBASE_USERNAME=liquibase
+            - LIQUIBASE_PASSWORD=liquibase
+        depends_on: 
+            - database
+        command: liquibase --changeLogFile=/liquibase/changelog-master.json rollback $TAG
+        

@@ -1,3 +1,1 @@
-create table test(
-    description varchar(10)
-)
+drop table test
