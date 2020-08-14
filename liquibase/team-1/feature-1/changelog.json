@@ -11,8 +11,8 @@
         },
         {
             "changeSet": {
-                "id": "sqlFile-example",
-                "author": "liquibase-docs",
+                "id": "20200811-create-table-test",
+                "author": "Josias",
                 "changes": [
                     {
                         "sqlFile": {
@@ -25,7 +25,15 @@
                                 "path": "/liquibase/team-1/feature-1/scripts/0.foo.rollback.sql"
                             }
                         }
-                    },
+                    }
+                ]
+            }
+        },
+        {
+            "changeSet": {
+                "id": "20200811-alter-table-test-create-column-active",
+                "author": "Josias",
+                "changes": [
                     {
                         "sqlFile": {
                             "endDelimiter": "\\nGO",
